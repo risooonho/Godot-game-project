@@ -55,10 +55,10 @@ position = Vector2( 25.8731, -11.6962 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-position = Vector2( 1.56555, -124.504 )
+position = Vector2( 5.9761, -118.623 )
 frames = SubResource( 2 )
-animation = "up"
-frame = 3
+animation = "right"
+frame = 5
 playing = true
 
 [node name="Shadow" type="Sprite" parent="."]
@@ -67,7 +67,6 @@ z_index = -1
 texture = ExtResource( 23 )
 
 [node name="GUI" parent="." instance=ExtResource( 24 )]
-visible = false
 margin_top = -121.67
 margin_bottom = 120.33
 

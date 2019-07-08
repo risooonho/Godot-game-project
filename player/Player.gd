@@ -98,4 +98,4 @@ func init(nickname, start_position, is_slave):
 	$GUI/Nickname.text = nickname
 	global_position = start_position
 	if is_slave:
-		$Sprite.animation = "right"
+		$Sprite.modulate = Color(1, 1, 0)
