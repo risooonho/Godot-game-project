@@ -38,7 +38,7 @@ func _physics_process(delta):
 func _move(direction):
 	match direction:
 		MoveDirection.NONE:
-			$Sprite.stop()
+			#$Sprite.stop()
 			return
 		MoveDirection.UP:
 			move_and_collide(Vector2(0, -MOVE_SPEED))
@@ -46,16 +46,16 @@ func _move(direction):
 			move_and_collide(Vector2(0, MOVE_SPEED))
 		MoveDirection.LEFT:
 			move_and_collide(Vector2(-MOVE_SPEED, 0))
-			_rifle_left()
-			$Sprite.flip_h = true
-			$Sprite.animation = "right"
-			$Sprite.play()
+			#_rifle_left()
+			#$Sprite.flip_h = true
+			#$Sprite.animation = "right"
+			#$Sprite.play()
 		MoveDirection.RIGHT:
 			move_and_collide(Vector2(MOVE_SPEED, 0))
-			_rifle_right()
-			$Sprite.flip_h = false
-			$Sprite.animation = "right"
-			$Sprite.play()
+			#_rifle_right()
+			#$Sprite.flip_h = false
+			#$Sprite.animation = "right"
+			#$Sprite.play()
 			
 func _rifle_right():
 	$Rifle.position.x = abs($Rifle.position.x)
