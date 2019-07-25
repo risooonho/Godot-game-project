@@ -7,6 +7,7 @@ enum MoveDirection { UP, DOWN, LEFT, RIGHT, NONE }
 
 slave var slave_position = Vector2()
 slave var slave_movement = MoveDirection.NONE
+slave var slave_rotation = 0.0
 
 var health_points = MAX_HP
 
@@ -27,43 +28,26 @@ func _physics_process(delta):
 			
 		rset_unreliable('slave_position', position)
 		rset('slave_movement', direction)
+		rset_unreliable('slave_rotation', rotation)
 		_move(direction)
 	else:
 		_move(slave_movement)
 		position = slave_position
+		rotation = slave_rotation
 	
 	if get_tree().is_network_server():
 		Network.update_position(int(name), position)
 
 func _move(direction):
 	match direction:
-		MoveDirection.NONE:
-			#$Sprite.stop()
-			return
 		MoveDirection.UP:
 			move_and_collide(Vector2(0, -MOVE_SPEED))
 		MoveDirection.DOWN:
 			move_and_collide(Vector2(0, MOVE_SPEED))
 		MoveDirection.LEFT:
 			move_and_collide(Vector2(-MOVE_SPEED, 0))
-			#_rifle_left()
-			#$Sprite.flip_h = true
-			#$Sprite.animation = "right"
-			#$Sprite.play()
 		MoveDirection.RIGHT:
 			move_and_collide(Vector2(MOVE_SPEED, 0))
-			#_rifle_right()
-			#$Sprite.flip_h = false
-			#$Sprite.animation = "right"
-			#$Sprite.play()
-			
-func _rifle_right():
-	$Rifle.position.x = abs($Rifle.position.x)
-	$Rifle.flip_h = false
-
-func _rifle_left():
-	$Rifle.position.x = -abs($Rifle.position.x)
-	$Rifle.flip_h = true
 
 func _update_health_bar():
 	$GUI/HealthBar.value = health_points
@@ -98,4 +82,4 @@ func init(nickname, start_position, is_slave):
 	$GUI/Nickname.text = nickname
 	global_position = start_position
 	if is_slave:
-		$Sprite.modulate = Color(1, 1, 0)
+		$Rifle.modulate = Color(1, 1, 0)

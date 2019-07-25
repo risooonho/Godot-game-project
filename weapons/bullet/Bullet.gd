@@ -9,7 +9,8 @@ func _ready():
 	set_as_toplevel(true)
 
 func _process(delta):
-	position += direction * SPEED * delta
+	if is_network_master():
+		position += direction * SPEED * delta
 
 func _on_body_entered(body):
 	if body.is_a_parent_of(self):

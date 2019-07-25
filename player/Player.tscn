@@ -5,7 +5,7 @@
 [ext_resource path="res://interface/GUI.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 47.688, 38.8805 )
+extents = Vector2( 39, 38.8805 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "players",
@@ -13,17 +13,15 @@ extents = Vector2( 47.688, 38.8805 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 25.4045, -11.1709 )
 shape = SubResource( 1 )
 
 [node name="Rifle" parent="." instance=ExtResource( 2 )]
-position = Vector2( 25.8731, -11.6962 )
 
 [node name="GUI" parent="." instance=ExtResource( 3 )]
-margin_left = -52.6132
-margin_top = -134.363
-margin_right = 103.387
-margin_bottom = 107.637
+margin_left = -53.0
+margin_top = -123.0
+margin_right = 50.0
+margin_bottom = 104.0
 
 [node name="RespawnTimer" type="Timer" parent="."]
 wait_time = 3.0
